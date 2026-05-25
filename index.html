@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRABZ - Campus Quick Store</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>GRABZ</span>
+                    </div>
+                    
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for stationery, snacks, etc." class="search-input">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Select Campus</span>
+                        </div>
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                        <div class="account-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Categories Nav -->
+        <div class="categories-nav">
+            <div class="container">
+                <div class="categories-scroll">
+                    <button class="category-btn active" onclick="filterProducts('all')">
+                        <i class="fas fa-home"></i> All
+                    </button>
+                    <button class="category-btn" onclick="filterProducts('stationery')">
+                        <i class="fas fa-pen"></i> Stationery
+                    </button>
+                    <button class="category-btn" onclick="filterProducts('snacks')">
+                        <i class="fas fa-cookie"></i> Snacks
+                    </button>
+                    <button class="category-btn" onclick="filterProducts('beverages')">
+                        <i class="fas fa-mug-hot"></i> Beverages
+                    </button>
+                    <button class="category-btn" onclick="filterProducts('essentials')">
+                        <i class="fas fa-cube"></i> Essentials
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Promotional Banner -->
+            <div class="promo-banner">
+                <div class="banner-content">
+                    <h2>Fast Delivery Inside Your Campus</h2>
+                    <p>Shop stationery, snacks & essentials at best prices</p>
+                    <p class="delivery-time">⚡ Delivered in 10-15 minutes</p>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <section class="products-section">
+                <h3 class="section-title">Popular Items</h3>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/home.js"></script>
+</body>
+</html>

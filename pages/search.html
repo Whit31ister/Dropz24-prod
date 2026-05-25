@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - GRABZ</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>GRABZ</span>
+                    </div>
+                    
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for products..." class="search-input" id="headerSearch">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Select Campus</span>
+                        </div>
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                        <div class="account-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." id="searchInput" class="search-input-page">
+                    <button class="search-btn" onclick="performSearch(document.getElementById('searchInput').value)">Search</button>
+                </div>
+
+                <!-- Filters -->
+                <div class="search-filters">
+                    <button class="filter-btn active" data-category="all" onclick="filterByCategory('all')">All Products</button>
+                    <button class="filter-btn" data-category="stationery" onclick="filterByCategory('stationery')">Stationery</button>
+                    <button class="filter-btn" data-category="snacks" onclick="filterByCategory('snacks')">Snacks</button>
+                    <button class="filter-btn" data-category="beverages" onclick="filterByCategory('beverages')">Beverages</button>
+                    <button class="filter-btn" data-category="essentials" onclick="filterByCategory('essentials')">Essentials</button>
+                </div>
+
+                <!-- Results Info -->
+                <div class="search-results-info">
+                    <div class="results-count" id="resultsCount"></div>
+                    <div class="sort-options">
+                        <label for="sortSelect" style="margin-right: 8px;">Sort:</label>
+                        <select id="sortSelect" class="sort-select" onchange="sortResults(this.value)">
+                            <option value="relevance">Relevance</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="discount">Best Discounts</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Results will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script src="../assets/js/products.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/search.js"></script>
+</body>
+</html>

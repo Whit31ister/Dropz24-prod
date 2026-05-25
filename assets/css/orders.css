@@ -1,0 +1,253 @@
+/* ===== Orders Page Styles ===== */
+.orders-page {
+    padding: 24px 0;
+    min-height: calc(100vh - 200px);
+}
+
+.orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.orders-header h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.orders-filter {
+    display: flex;
+    gap: 12px;
+}
+
+.orders-filter button {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.orders-filter button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+/* Order Card */
+.order-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: var(--transition);
+}
+
+.order-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.order-id {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.order-id strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.order-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.order-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.order-status.processing {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+.order-status.delivered {
+    background-color: #d1e7dd;
+    color: #0a3622;
+}
+
+.order-status.cancelled {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.order-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.order-info {
+    font-size: 14px;
+}
+
+.order-info-label {
+    color: var(--text-light);
+    margin-bottom: 4px;
+}
+
+.order-info-value {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.order-items {
+    font-size: 14px;
+}
+
+.order-items-label {
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.order-items-list {
+    list-style: none;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.order-items-list li {
+    padding: 4px 0;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.order-items-list li:last-child {
+    border-bottom: none;
+}
+
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.order-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.order-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.order-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.order-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+.order-btn.primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+.order-btn.primary:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Empty Orders */
+.no-orders {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.no-orders-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.no-orders h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.no-orders p {
+    color: var(--text-light);
+    margin-bottom: 24px;
+}
+
+.no-orders-btn {
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.no-orders-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .order-body {
+        grid-template-columns: 1fr;
+    }
+
+    .order-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .order-footer {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .order-actions {
+        width: 100%;
+    }
+
+    .order-btn {
+        flex: 1;
+    }
+}

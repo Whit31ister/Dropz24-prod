@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - GRABZ</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>GRABZ</span>
+                    </div>
+                    
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for products..." class="search-input">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="header-actions">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Select Campus</span>
+                        </div>
+                        <div class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                        <div class="account-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="account-container">
+                <!-- Sidebar -->
+                <aside class="account-sidebar">
+                    <div class="account-avatar">
+                        <div class="avatar-circle">👤</div>
+                    </div>
+                    
+                    <div class="account-user-info">
+                        <div class="account-user-name">John Doe</div>
+                        <div class="account-user-email">john@example.com</div>
+                    </div>
+
+                    <ul class="account-menu">
+                        <li><a data-section="profile-section" class="active">
+                            <i class="fas fa-user-circle"></i> My Profile
+                        </a></li>
+                        <li><a data-section="addresses-section">
+                            <i class="fas fa-map-marker-alt"></i> Addresses
+                        </a></li>
+                        <li><a data-section="preferences-section">
+                            <i class="fas fa-cog"></i> Preferences
+                        </a></li>
+                        <li><a href="../pages/orders.html">
+                            <i class="fas fa-box"></i> My Orders
+                        </a></li>
+                    </ul>
+
+                    <button class="account-logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </aside>
+
+                <!-- Content -->
+                <div class="account-content">
+                    <!-- Profile Section -->
+                    <section class="account-section active" id="profile-section">
+                        <h2>My Profile</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" id="fullName" placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" id="email" placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-input" id="phone" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-save">Save Changes</button>
+                            <button class="btn-cancel">Cancel</button>
+                        </div>
+                    </section>
+
+                    <!-- Addresses Section -->
+                    <section class="account-section" id="addresses-section">
+                        <h2>My Addresses</h2>
+                        
+                        <div id="addressesContainer" style="margin-bottom: 24px;">
+                            <!-- Addresses will be loaded here -->
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn-save">Add New Address</button>
+                        </div>
+                    </section>
+
+                    <!-- Preferences Section -->
+                    <section class="account-section" id="preferences-section">
+                        <h2>Preferences</h2>
+                        
+                        <div class="preference-item">
+                            <div>
+                                <div class="preference-label">Push Notifications</div>
+                                <div class="preference-description">Get notified about orders and promotions</div>
+                            </div>
+                            <div class="toggle-switch active" id="pref-notifications"></div>
+                        </div>
+
+                        <div class="preference-item">
+                            <div>
+                                <div class="preference-label">Newsletter</div>
+                                <div class="preference-description">Receive weekly deals and updates</div>
+                            </div>
+                            <div class="toggle-switch" id="pref-newsletter"></div>
+                        </div>
+
+                        <div class="preference-item">
+                            <div>
+                                <div class="preference-label">Save Cards</div>
+                                <div class="preference-description">Save payment methods for faster checkout</div>
+                            </div>
+                            <div class="toggle-switch active" id="pref-savedCards"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <script src="../assets/js/products.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/account.js"></script>
+</body>
+</html>
