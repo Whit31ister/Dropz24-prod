@@ -222,6 +222,156 @@ const products = [
         originalPrice: 249,
         description: 'Monthly planner',
         emoji: '📅'
+    },
+    {
+        id: 25,
+        name: 'Power Bank',
+        category: 'essentials',
+        price: 449,
+        originalPrice: 599,
+        description: '20000mAh',
+        emoji: '🔋'
+    },
+    {
+        id: 26,
+        name: 'Deodorant',
+        category: 'essentials',
+        price: 149,
+        originalPrice: 199,
+        description: '150ml spray',
+        emoji: '💨'
+    },
+    {
+        id: 27,
+        name: 'Moisturizer',
+        category: 'essentials',
+        price: 199,
+        originalPrice: 299,
+        description: '50ml moisturizing',
+        emoji: '🧴'
+    },
+    {
+        id: 28,
+        name: 'Toothbrush',
+        category: 'essentials',
+        price: 49,
+        originalPrice: 79,
+        description: 'Soft bristles',
+        emoji: '🪥'
+    },
+
+    // Additional Stationery
+    {
+        id: 29,
+        name: 'Markers Set',
+        category: 'stationery',
+        price: 129,
+        originalPrice: 179,
+        description: '12 colors',
+        emoji: '🖌️'
+    },
+    {
+        id: 30,
+        name: 'Correction Fluid',
+        category: 'stationery',
+        price: 39,
+        originalPrice: 59,
+        description: '20ml bottle',
+        emoji: '⚪'
+    },
+    {
+        id: 31,
+        name: 'Sticky Notes',
+        category: 'stationery',
+        price: 59,
+        originalPrice: 89,
+        description: '300 notes',
+        emoji: '📌'
+    },
+    {
+        id: 32,
+        name: 'Eraser Set',
+        category: 'stationery',
+        price: 49,
+        originalPrice: 79,
+        description: 'Pack of 5',
+        emoji: '🧹'
+    },
+
+    // Additional Snacks
+    {
+        id: 33,
+        name: 'Biscuits',
+        category: 'snacks',
+        price: 59,
+        originalPrice: 89,
+        description: 'Butter flavor',
+        emoji: '🍘'
+    },
+    {
+        id: 34,
+        name: 'Instant Noodles',
+        category: 'snacks',
+        price: 29,
+        originalPrice: 49,
+        description: 'Quick meal',
+        emoji: '🍜'
+    },
+    {
+        id: 35,
+        name: 'Candy Pack',
+        category: 'snacks',
+        price: 69,
+        originalPrice: 99,
+        description: 'Assorted flavors',
+        emoji: '🍬'
+    },
+    {
+        id: 36,
+        name: 'Popcorn',
+        category: 'snacks',
+        price: 79,
+        originalPrice: 109,
+        description: 'Caramel flavor',
+        emoji: '🍿'
+    },
+
+    // Additional Beverages
+    {
+        id: 37,
+        name: 'Iced Tea',
+        category: 'beverages',
+        price: 59,
+        originalPrice: 79,
+        description: '250ml chilled',
+        emoji: '🧋'
+    },
+    {
+        id: 38,
+        name: 'Energy Bar',
+        category: 'beverages',
+        price: 89,
+        originalPrice: 119,
+        description: 'Chocolate',
+        emoji: '🍫'
+    },
+    {
+        id: 39,
+        name: 'Vitamin Water',
+        category: 'beverages',
+        price: 79,
+        originalPrice: 99,
+        description: '500ml bottle',
+        emoji: '💧'
+    },
+    {
+        id: 40,
+        name: 'Smoothie Mix',
+        category: 'beverages',
+        price: 149,
+        originalPrice: 199,
+        description: 'Fruit blend',
+        emoji: '🥤'
     }
 ];
 

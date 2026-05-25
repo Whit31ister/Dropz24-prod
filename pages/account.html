@@ -24,7 +24,7 @@
                     </div>
                     
                     <div class="header-actions">
-                        <div class="location">
+                        <div class="location" onclick="openCampusModal()">
                             <i class="fas fa-map-marker-alt"></i>
                             <span>Select Campus</span>
                         </div>
@@ -171,6 +171,54 @@
 
     <!-- Cart Overlay -->
     <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Campus Selection Modal -->
+    <div id="campusModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Select Your Campus</h2>
+                <button class="modal-close" onclick="closeCampusModal()">×</button>
+            </div>
+            <div id="campusOptions" class="campus-options">
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Your Order</h2>
+                <button class="modal-close" onclick="closeOrderModal()">×</button>
+            </div>
+            <div class="order-summary">
+                <div class="order-summary-item">
+                    <span class="order-summary-label">Campus:</span>
+                    <span class="order-summary-value" id="modalCampus">Select Campus</span>
+                </div>
+                <div class="order-summary-item">
+                    <span class="order-summary-label">Items:</span>
+                    <span class="order-summary-value" id="modalItems">0</span>
+                </div>
+                <div class="order-summary-item">
+                    <span class="order-summary-label">Delivery Time:</span>
+                    <span class="order-summary-value" id="modalDeliveryTime">10:30 AM</span>
+                </div>
+                <div class="order-summary-total">
+                    <span class="order-summary-total-label">Total:</span>
+                    <span class="order-summary-total-value" id="modalOrderTotal">₹0</span>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-confirm" onclick="confirmOrder()">Place Order</button>
+                <button class="modal-btn modal-btn-cancel" onclick="closeOrderModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Tracking -->
+    <div id="orderTracker" class="modal">
+    </div>
 
     <script src="../assets/js/products.js"></script>
     <script src="../assets/js/cart.js"></script>

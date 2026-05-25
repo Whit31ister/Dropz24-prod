@@ -54,17 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Checkout button handler
     const checkoutBtn = document.querySelector('.checkout-btn');
     if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', () => {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            const total = getCartTotal();
-            const order = addOrder(cart, total);
-            alert(`Order placed successfully!\nOrder ID: ${order.id}\nTotal: ${formatCurrency(total)}\n\nDelivery expected in 10-15 minutes.`);
-            clearCart();
-            toggleCart();
-        });
+        checkoutBtn.addEventListener('click', openOrderModal);
     }
 });
