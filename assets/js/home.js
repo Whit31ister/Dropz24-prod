@@ -7,22 +7,26 @@ function renderProducts(productsToRender) {
     grid.innerHTML = '';
 
     productsToRender.forEach(product => {
-        const discount = calculateDiscount(product.originalPrice, product.price);
+        const offer = (typeof getLimitedOfferForProduct === 'function') ? getLimitedOfferForProduct(product.id) : null;
+        const effectivePrice = (typeof getEffectivePrice === 'function') ? getEffectivePrice(product) : product.price;
+        const discount = Math.round(((product.originalPrice - effectivePrice) / product.originalPrice) * 100);
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
             <div class="product-image">
                 <span style="font-size: 64px;">${product.emoji}</span>
+                ${offer ? `<span class="lt-badge">${offer.percent}% OFF</span>` : ''}
             </div>
             <div class="product-info">
                 <h4 class="product-name">${product.name}</h4>
+                <div class="product-brand">${product.brand}</div>
                 <p class="product-description">${product.description}</p>
                 <div class="product-footer">
                     <div>
-                        <span class="product-price">${formatCurrency(product.price)}</span>
+                        <span class="product-price">${formatCurrency(effectivePrice)}</span>
                         <span class="product-original-price">${formatCurrency(product.originalPrice)}</span>
                     </div>
-                    <span class="discount-badge">${discount}% OFF</span>
+                    <span class="discount-badge">${discount > 0 ? discount + '% OFF' : ''}</span>
                 </div>
             </div>
             <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add</button>
@@ -57,3 +61,39 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutBtn.addEventListener('click', openOrderModal);
     }
 });
+
+// ===== Limited Offer Banner & Countdown (adds interactive countdown) =====
+(function(){
+  function startCountdown(el, expiresAt) {
+    function update() {
+      const now = Date.now();
+      const diff = Math.max(0, expiresAt - now);
+      const hrs = Math.floor(diff / (1000*60*60));
+      const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const secs = Math.floor((diff % (1000*60)) / 1000);
+      const pad = n => String(n).padStart(2, '0');
+      el.textContent = `Ends in ${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+      if (diff <= 0) { el.textContent = 'Offer ended'; clearInterval(timer); document.getElementById('limitedOfferBanner').style.display = 'none'; }
+    }
+    update();
+    const timer = setInterval(update, 1000);
+    return timer;
+  }
+
+  function initLimitedOffer() {
+    const banner = document.getElementById('limitedOfferBanner');
+    if (!banner) return;
+    const countdownEl = document.getElementById('limitedCountdown');
+    // offer: 15% off, expires in 2 hours from first load
+    const expiresAt = Date.now() + (2 * 60 * 60 * 1000);
+    startCountdown(countdownEl, expiresAt);
+    const closeBtn = document.getElementById('closeLimitedBanner');
+    if (closeBtn) closeBtn.addEventListener('click', () => { banner.style.display = 'none'; });
+
+    // subtle entrance animation
+    banner.style.opacity = 0; banner.style.transform = 'translateY(-6px)';
+    setTimeout(()=>{ banner.style.transition = 'opacity 320ms, transform 320ms'; banner.style.opacity = 1; banner.style.transform = 'translateY(0)'; }, 80);
+  }
+
+  document.addEventListener('DOMContentLoaded', initLimitedOffer);
+})();

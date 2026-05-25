@@ -1,345 +1,345 @@
 // ===== Product Data =====
 const products = [
-    // Stationery
+    // Stationery - popular branded examples
     {
         id: 1,
-        name: 'Notebook Set',
+        name: 'Moleskine Classic Notebook — Ruled (Moleskine)',
         category: 'stationery',
-        price: 149,
-        originalPrice: 199,
-        description: '200 pages ruled',
+        price: 799,
+        originalPrice: 999,
+        description: 'Hardcover, 192 pages ruled',
         emoji: '📓'
     },
     {
         id: 2,
-        name: 'Ballpoint Pens',
+        name: 'Pilot G2 Gel Pens — 0.7mm (Pilot)',
         category: 'stationery',
-        price: 79,
-        originalPrice: 99,
-        description: 'Pack of 10',
+        price: 249,
+        originalPrice: 349,
+        description: 'Pack of 5 smooth-writing gel pens',
         emoji: '🖊️'
     },
     {
         id: 3,
-        name: 'Highlighters',
+        name: 'Stabilo Highlighters — Pastel Set (Stabilo)',
         category: 'stationery',
-        price: 99,
-        originalPrice: 129,
-        description: 'Set of 5 colors',
+        price: 179,
+        originalPrice: 249,
+        description: 'Set of 6 pastel highlighters',
         emoji: '🖍️'
     },
     {
         id: 4,
-        name: 'Pencil Box',
+        name: 'Faber-Castell Mechanical Pencil — 0.5mm',
         category: 'stationery',
-        price: 189,
-        originalPrice: 249,
-        description: 'Wooden with lock',
-        emoji: '📦'
+        price: 129,
+        originalPrice: 179,
+        description: 'Durable metal tip, refillable',
+        emoji: '✏️'
     },
     {
         id: 5,
-        name: 'A4 Paper Ream',
+        name: 'HP A4 Paper Ream — 80gsm (HP)',
         category: 'stationery',
         price: 299,
-        originalPrice: 349,
-        description: '500 sheets',
+        originalPrice: 399,
+        description: '500 sheets, multipurpose',
         emoji: '📄'
     },
     {
         id: 6,
-        name: 'Calculator',
+        name: 'Casio Scientific Calculator — FX-991 (Casio)',
         category: 'stationery',
-        price: 249,
-        originalPrice: 349,
-        description: 'Scientific',
+        price: 899,
+        originalPrice: 1199,
+        description: 'Scientific functions, solar backed',
         emoji: '🧮'
     },
 
-    // Snacks
+    // Snacks — brand examples
     {
         id: 7,
-        name: 'Potato Chips',
+        name: "Lay's Classic Potato Chips — 40g (Lay's)",
         category: 'snacks',
-        price: 39,
-        originalPrice: 49,
-        description: 'Salted 40g',
+        price: 25,
+        originalPrice: 40,
+        description: 'Salted, crunchy',
         emoji: '🥔'
     },
     {
         id: 8,
-        name: 'Chocolate Bar',
+        name: 'Cadbury Dairy Milk — 60g (Cadbury)',
         category: 'snacks',
-        price: 29,
-        originalPrice: 39,
-        description: 'Dark chocolate',
+        price: 45,
+        originalPrice: 60,
+        description: 'Milk chocolate bar',
         emoji: '🍫'
     },
     {
         id: 9,
-        name: 'Mixed Nuts',
+        name: 'Nature Valley Granola Bar — Oats & Honey',
         category: 'snacks',
-        price: 149,
-        originalPrice: 199,
-        description: 'Premium 200g',
-        emoji: '🥜'
-    },
-    {
-        id: 10,
-        name: 'Granola Bar',
-        category: 'snacks',
-        price: 45,
-        originalPrice: 59,
-        description: 'Honey oats',
+        price: 35,
+        originalPrice: 49,
+        description: 'Single bar, crunchy oats',
         emoji: '🍪'
     },
     {
-        id: 11,
-        name: 'Energy Drink',
+        id: 10,
+        name: 'Pringles Original — Snack Can (Pringles)',
         category: 'snacks',
-        price: 99,
-        originalPrice: 129,
-        description: 'Electrolyte mix',
-        emoji: '⚡'
+        price: 79,
+        originalPrice: 119,
+        description: 'Crispy potato crisps',
+        emoji: '🥔'
+    },
+    {
+        id: 11,
+        name: 'Blue Diamond Almonds — Smokehouse (Blue Diamond)',
+        category: 'snacks',
+        price: 149,
+        originalPrice: 199,
+        description: 'Roasted almonds, 120g',
+        emoji: '🥜'
     },
     {
         id: 12,
-        name: 'Dried Fruits',
+        name: 'Trail Mix — Healthy Bites (BrandX)',
         category: 'snacks',
-        price: 199,
-        originalPrice: 259,
-        description: 'Mixed 150g',
+        price: 129,
+        originalPrice: 179,
+        description: 'Assorted nuts & dried fruit, 150g',
         emoji: '🍇'
     },
 
-    // Beverages
+    // Beverages — examples
     {
         id: 13,
-        name: 'Cold Coffee',
+        name: 'Starbucks Cold Brew — Bottled (Starbucks)',
         category: 'beverages',
-        price: 69,
-        originalPrice: 89,
-        description: '200ml ready-made',
+        price: 129,
+        originalPrice: 169,
+        description: 'Ready-to-drink cold brew, 200ml',
         emoji: '☕'
     },
     {
         id: 14,
-        name: 'Green Tea',
+        name: 'Tetley Green Tea — 25 Bags (Tetley)',
         category: 'beverages',
-        price: 39,
-        originalPrice: 49,
-        description: 'Organic tea bags',
+        price: 99,
+        originalPrice: 129,
+        description: 'Antioxidant rich green tea bags',
         emoji: '🍵'
     },
     {
         id: 15,
-        name: 'Orange Juice',
+        name: 'Tropicana Orange Juice — 250ml (Tropicana)',
         category: 'beverages',
-        price: 79,
+        price: 69,
         originalPrice: 99,
-        description: '250ml fresh',
+        description: 'Fresh squeezed taste',
         emoji: '🧃'
     },
     {
         id: 16,
-        name: 'Protein Shake',
+        name: 'MuscleBlaze Protein Shake — Chocolate (MuscleBlaze)',
         category: 'beverages',
-        price: 149,
-        originalPrice: 189,
-        description: 'Chocolate flavor',
+        price: 179,
+        originalPrice: 249,
+        description: 'Ready-to-drink protein shake, 250ml',
         emoji: '🥛'
     },
     {
         id: 17,
-        name: 'Coconut Water',
+        name: 'Coconut Water — Real (Real)',
         category: 'beverages',
         price: 59,
         originalPrice: 79,
-        description: 'Natural 200ml',
+        description: 'Natural electrolytes, 200ml',
         emoji: '🥥'
     },
     {
         id: 18,
-        name: 'Lemonade',
+        name: 'Minute Maid Lemonade — 250ml (Minute Maid)',
         category: 'beverages',
         price: 49,
         originalPrice: 69,
-        description: 'Chilled 250ml',
+        description: 'Refreshing lemonade',
         emoji: '🍋'
     },
 
-    // Daily Essentials
+    // Essentials — brand examples
     {
         id: 19,
-        name: 'Hand Sanitizer',
+        name: 'Dettol Hand Sanitizer — 100ml (Dettol)',
         category: 'essentials',
         price: 39,
         originalPrice: 59,
-        description: '100ml bottle',
+        description: 'Kills 99.9% germs',
         emoji: '🧴'
     },
     {
         id: 20,
-        name: 'Tissues',
+        name: 'Kleenex Facial Tissues — 100 Sheets (Kleenex)',
         category: 'essentials',
-        price: 29,
-        originalPrice: 49,
-        description: 'Pack of 100',
+        price: 49,
+        originalPrice: 79,
+        description: 'Soft & strong',
         emoji: '🧻'
     },
     {
         id: 21,
-        name: 'Phone Charger',
+        name: 'Anker PowerPort Charger — 18W (Anker)',
         category: 'essentials',
-        price: 299,
-        originalPrice: 399,
-        description: 'Fast charging',
-        emoji: '⚡'
+        price: 599,
+        originalPrice: 899,
+        description: 'Fast charging wall adapter',
+        emoji: '🔌'
     },
     {
         id: 22,
-        name: 'USB Cable',
+        name: 'Anker PowerLine USB-C Cable — 1m (Anker)',
         category: 'essentials',
-        price: 99,
-        originalPrice: 149,
-        description: 'Type-C 1m',
+        price: 199,
+        originalPrice: 299,
+        description: 'Durable braided cable',
         emoji: '🔌'
     },
     {
         id: 23,
-        name: 'Earbuds',
+        name: 'boAt Airdopes — True Wireless Earbuds (boAt)',
         category: 'essentials',
-        price: 399,
-        originalPrice: 549,
-        description: 'Wireless with case',
+        price: 899,
+        originalPrice: 1299,
+        description: 'Wireless earbuds with charging case',
         emoji: '🎧'
     },
     {
         id: 24,
-        name: 'Notebook Diary',
+        name: 'Moleskine Planner — Monthly (Moleskine)',
         category: 'essentials',
-        price: 179,
-        originalPrice: 249,
-        description: 'Monthly planner',
+        price: 249,
+        originalPrice: 349,
+        description: 'Monthly planner diary',
         emoji: '📅'
     },
     {
         id: 25,
-        name: 'Power Bank',
+        name: 'Xiaomi 10000mAh Power Bank — Compact (Xiaomi)',
         category: 'essentials',
-        price: 449,
-        originalPrice: 599,
-        description: '20000mAh',
+        price: 999,
+        originalPrice: 1299,
+        description: 'Compact fast charge power bank',
         emoji: '🔋'
     },
     {
         id: 26,
-        name: 'Deodorant',
+        name: 'Nivea Deodorant — 150ml (Nivea)',
         category: 'essentials',
         price: 149,
         originalPrice: 199,
-        description: '150ml spray',
+        description: '48h protection spray',
         emoji: '💨'
     },
     {
         id: 27,
-        name: 'Moisturizer',
+        name: 'Neutrogena Moisturizer — 50ml (Neutrogena)',
         category: 'essentials',
-        price: 199,
-        originalPrice: 299,
-        description: '50ml moisturizing',
+        price: 229,
+        originalPrice: 329,
+        description: 'Daily hydration cream',
         emoji: '🧴'
     },
     {
         id: 28,
-        name: 'Toothbrush',
+        name: 'Colgate Toothbrush — Soft (Colgate)',
         category: 'essentials',
-        price: 49,
-        originalPrice: 79,
-        description: 'Soft bristles',
+        price: 59,
+        originalPrice: 99,
+        description: 'Soft bristles, ergonomic handle',
         emoji: '🪥'
     },
 
-    // Additional Stationery
+    // More Stationery
     {
         id: 29,
-        name: 'Markers Set',
+        name: 'Sharpie Permanent Marker — Black (Sharpie)',
         category: 'stationery',
-        price: 129,
-        originalPrice: 179,
-        description: '12 colors',
+        price: 99,
+        originalPrice: 149,
+        description: 'Permanent fine point',
         emoji: '🖌️'
     },
     {
         id: 30,
-        name: 'Correction Fluid',
+        name: 'Paper Mate Correction Tape — 5mm (Paper Mate)',
         category: 'stationery',
-        price: 39,
-        originalPrice: 59,
-        description: '20ml bottle',
+        price: 69,
+        originalPrice: 99,
+        description: 'Clean correction tape',
         emoji: '⚪'
     },
     {
         id: 31,
-        name: 'Sticky Notes',
+        name: 'Post-it Notes — 3x3 Inch (Post-it)',
         category: 'stationery',
-        price: 59,
-        originalPrice: 89,
-        description: '300 notes',
+        price: 99,
+        originalPrice: 129,
+        description: 'Pack of 5 pads',
         emoji: '📌'
     },
     {
         id: 32,
-        name: 'Eraser Set',
+        name: 'Staedtler Eraser — Pack of 2 (Staedtler)',
         category: 'stationery',
         price: 49,
         originalPrice: 79,
-        description: 'Pack of 5',
+        description: 'Clean erasing',
         emoji: '🧹'
     },
 
-    // Additional Snacks
+    // More Snacks
     {
         id: 33,
-        name: 'Biscuits',
+        name: 'Britannia Good Day — Butter Cookies (Britannia)',
         category: 'snacks',
-        price: 59,
-        originalPrice: 89,
-        description: 'Butter flavor',
-        emoji: '🍘'
+        price: 45,
+        originalPrice: 69,
+        description: 'Rich buttery cookies',
+        emoji: '🍪'
     },
     {
         id: 34,
-        name: 'Instant Noodles',
+        name: 'Maggi Masala Noodles — Single Pack (Maggi)',
         category: 'snacks',
-        price: 29,
-        originalPrice: 49,
-        description: 'Quick meal',
+        price: 25,
+        originalPrice: 35,
+        description: 'Quick instant noodles',
         emoji: '🍜'
     },
     {
         id: 35,
-        name: 'Candy Pack',
+        name: 'Ferrero Rocher — 3 Pieces (Ferrero)',
         category: 'snacks',
-        price: 69,
-        originalPrice: 99,
-        description: 'Assorted flavors',
-        emoji: '🍬'
+        price: 149,
+        originalPrice: 199,
+        description: 'Hazelnut chocolate delight',
+        emoji: '🍫'
     },
     {
         id: 36,
-        name: 'Popcorn',
+        name: 'Joe & Sephs Popcorn — Caramel (Joe & Sephs)',
         category: 'snacks',
-        price: 79,
-        originalPrice: 109,
-        description: 'Caramel flavor',
+        price: 89,
+        originalPrice: 129,
+        description: 'Gourmet caramel popcorn',
         emoji: '🍿'
     },
 
-    // Additional Beverages
+    // More Beverages
     {
         id: 37,
-        name: 'Iced Tea',
+        name: 'Lipton Iced Tea — Peach (Lipton)',
         category: 'beverages',
         price: 59,
         originalPrice: 79,
@@ -348,29 +348,29 @@ const products = [
     },
     {
         id: 38,
-        name: 'Energy Bar',
-        category: 'beverages',
-        price: 89,
-        originalPrice: 119,
-        description: 'Chocolate',
-        emoji: '🍫'
-    },
-    {
-        id: 39,
-        name: 'Vitamin Water',
+        name: 'Nature''s Own Vitamin Water — 500ml',
         category: 'beverages',
         price: 79,
         originalPrice: 99,
-        description: '500ml bottle',
+        description: 'Electrolyte boost',
         emoji: '💧'
     },
     {
-        id: 40,
-        name: 'Smoothie Mix',
+        id: 39,
+        name: 'True Elements Energy Bar — Peanut (True Elements)',
         category: 'beverages',
-        price: 149,
-        originalPrice: 199,
-        description: 'Fruit blend',
+        price: 89,
+        originalPrice: 119,
+        description: 'Nutritious energy bar',
+        emoji: '🍫'
+    },
+    {
+        id: 40,
+        name: 'Real Smoothie — Mixed Berry (Real)',
+        category: 'beverages',
+        price: 129,
+        originalPrice: 179,
+        description: 'Fruit blend smoothie',
         emoji: '🥤'
     }
 ];
