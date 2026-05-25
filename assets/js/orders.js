@@ -69,11 +69,15 @@ function displayOrders(filter = 'all') {
     }).join('');
 }
 
-function filterOrders(status) {
+function filterOrders(status, triggerButton) {
     document.querySelectorAll('.orders-filter button').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
+    if (triggerButton) {
+        triggerButton.classList.add('active');
+    } else if (typeof event !== 'undefined' && event.target) {
+        event.target.classList.add('active');
+    }
 
     displayOrders(status);
 }

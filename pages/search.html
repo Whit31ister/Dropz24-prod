@@ -39,6 +39,10 @@
                 </div>
             </div>
         </div>
+
+        <!-- Offers Banner -->
+        <div id="offersBanner" class="offers-banner" style="display:none;"></div>
+
     </header>
 
     <!-- Main Content -->
@@ -53,11 +57,11 @@
 
                 <!-- Filters -->
                 <div class="search-filters">
-                    <button class="filter-btn active" data-category="all" onclick="filterByCategory('all')">All Products</button>
-                    <button class="filter-btn" data-category="stationery" onclick="filterByCategory('stationery')">Stationery</button>
-                    <button class="filter-btn" data-category="snacks" onclick="filterByCategory('snacks')">Snacks</button>
-                    <button class="filter-btn" data-category="beverages" onclick="filterByCategory('beverages')">Beverages</button>
-                    <button class="filter-btn" data-category="essentials" onclick="filterByCategory('essentials')">Essentials</button>
+                    <button class="filter-btn active" data-category="all" onclick="filterByCategory('all', this)">All Products</button>
+                    <button class="filter-btn" data-category="stationery" onclick="filterByCategory('stationery', this)">Stationery</button>
+                    <button class="filter-btn" data-category="snacks" onclick="filterByCategory('snacks', this)">Snacks</button>
+                    <button class="filter-btn" data-category="beverages" onclick="filterByCategory('beverages', this)">Beverages</button>
+                    <button class="filter-btn" data-category="essentials" onclick="filterByCategory('essentials', this)">Essentials</button>
                 </div>
 
                 <!-- Results Info -->

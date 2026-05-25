@@ -82,3 +82,32 @@
     --radius-2xl: 24px;
     --radius-full: 999px;
 }
+
+body.theme-dark {
+    --primary-color: #f4f6fa;
+    --secondary-color: #d7dce6;
+    --accent-color: #aeb6c4;
+
+    --text-dark: #f4f6fa;
+    --text-medium: #d8dde7;
+    --text-light: #aeb6c4;
+    --text-lighter: #8b94a5;
+    --text-muted: #647084;
+
+    --bg-light: #0f1218;
+    --bg-lighter: #171c24;
+    --bg-medium: #1d2430;
+
+    --border-color: #2a3342;
+    --border-light: #202838;
+    --border-dark: #3a4658;
+
+    --error-color: #ef6b6b;
+    --success-color: #cdd5e2;
+    --warning-color: #d9dee8;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.45);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.5);
+}

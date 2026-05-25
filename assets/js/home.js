@@ -19,7 +19,7 @@ function renderProducts(productsToRender) {
             </div>
             <div class="product-info">
                 <h4 class="product-name">${product.name}</h4>
-                <div class="product-brand">${product.brand}</div>
+                ${product.brand ? `<div class="product-brand">${product.brand}</div>` : ''}
                 <p class="product-description">${product.description}</p>
                 <div class="product-footer">
                     <div>
@@ -35,12 +35,16 @@ function renderProducts(productsToRender) {
     });
 }
 
-function filterProducts(category) {
+function filterProducts(category, triggerButton) {
     // Update active button
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
+    if (triggerButton) {
+        triggerButton.classList.add('active');
+    } else if (typeof event !== 'undefined' && event.target) {
+        event.target.classList.add('active');
+    }
 
     // Filter and render
     if (category === 'all') {
@@ -51,9 +55,32 @@ function filterProducts(category) {
     }
 }
 
+function renderHomeDealsRail() {
+    const rail = document.getElementById('homeDealsRail');
+    if (!rail || typeof getTopLimitedOffers !== 'function') return;
+
+    const deals = getTopLimitedOffers(4);
+    if (deals.length === 0) {
+        rail.style.display = 'none';
+        return;
+    }
+
+    rail.innerHTML = deals.map((offer) => {
+        const product = products.find((item) => item.id === offer.productId);
+        if (!product) return '';
+        return `
+            <button class="deal-chip" onclick="navigateTo('${getSearchPagePath(`${product.brand} ${product.name}`)}')">
+                <span class="deal-chip-percent">${offer.percent}% OFF</span>
+                <span class="deal-chip-name">${product.brand} ${product.name}</span>
+            </button>
+        `;
+    }).join('');
+}
+
 // Initialize home page
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
+    renderHomeDealsRail();
     
     // Checkout button handler
     const checkoutBtn = document.querySelector('.checkout-btn');
@@ -84,9 +111,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const banner = document.getElementById('limitedOfferBanner');
     if (!banner) return;
     const countdownEl = document.getElementById('limitedCountdown');
-    // offer: 15% off, expires in 2 hours from first load
-    const expiresAt = Date.now() + (2 * 60 * 60 * 1000);
-    startCountdown(countdownEl, expiresAt);
+    const textEl = banner.querySelector('.offer-text');
+    const featuredOffer = (typeof getTopLimitedOffers === 'function') ? getTopLimitedOffers(1)[0] : null;
+
+    if (!featuredOffer) {
+      banner.style.display = 'none';
+      return;
+    }
+
+    const featuredProduct = products.find((product) => product.id === featuredOffer.productId);
+    if (featuredProduct && textEl) {
+      textEl.innerHTML = `Limited Time: Extra <strong>${featuredOffer.percent}% OFF</strong> on ${featuredProduct.brand} ${featuredProduct.name}`;
+    }
+
+    startCountdown(countdownEl, featuredOffer.expiresAt);
     const closeBtn = document.getElementById('closeLimitedBanner');
     if (closeBtn) closeBtn.addEventListener('click', () => { banner.style.display = 'none'; });
 

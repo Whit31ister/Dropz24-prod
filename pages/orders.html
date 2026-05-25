@@ -39,6 +39,10 @@
                 </div>
             </div>
         </div>
+
+        <!-- Offers Banner -->
+        <div id="offersBanner" class="offers-banner" style="display:none;"></div>
+
     </header>
 
     <!-- Main Content -->
@@ -48,10 +52,10 @@
             <div class="orders-header">
                 <h1>My Orders</h1>
                 <div class="orders-filter">
-                    <button onclick="filterOrders('all')">All</button>
-                    <button onclick="filterOrders('processing')">Processing</button>
-                    <button onclick="filterOrders('delivered')">Delivered</button>
-                    <button onclick="filterOrders('cancelled')">Cancelled</button>
+                    <button onclick="filterOrders('all', this)">All</button>
+                    <button onclick="filterOrders('processing', this)">Processing</button>
+                    <button onclick="filterOrders('delivered', this)">Delivered</button>
+                    <button onclick="filterOrders('cancelled', this)">Cancelled</button>
                 </div>
             </div>
 

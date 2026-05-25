@@ -10,6 +10,7 @@ function performSearch(query = '') {
 
     if (query) {
         filtered = products.filter(p =>
+            p.brand.toLowerCase().includes(query.toLowerCase()) ||
             p.name.toLowerCase().includes(query.toLowerCase()) ||
             p.description.toLowerCase().includes(query.toLowerCase())
         );
@@ -18,18 +19,23 @@ function performSearch(query = '') {
     displaySearchResults(filtered, query);
 }
 
-function filterByCategory(category) {
+function filterByCategory(category, triggerButton) {
     const query = document.getElementById('searchInput')?.value || '';
     
     if (category === 'all') {
         performSearch(query);
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        document.querySelector('[data-category="all"]').classList.add('active');
+        if (triggerButton) {
+            triggerButton.classList.add('active');
+        } else {
+            document.querySelector('[data-category="all"]')?.classList.add('active');
+        }
     } else {
         let filtered = products;
 
         if (query) {
             filtered = filtered.filter(p =>
+                p.brand.toLowerCase().includes(query.toLowerCase()) ||
                 p.name.toLowerCase().includes(query.toLowerCase()) ||
                 p.description.toLowerCase().includes(query.toLowerCase())
             );
@@ -39,16 +45,19 @@ function filterByCategory(category) {
         displaySearchResults(filtered, query, category);
         
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        if (triggerButton) {
+            triggerButton.classList.add('active');
+        } else if (typeof event !== 'undefined' && event.target) {
+            event.target.classList.add('active');
+        }
     }
 }
 
 function displaySearchResults(results, query, category = 'all') {
     const grid = document.getElementById('productsGrid');
-    const resultInfo = document.getElementById('resultInfo');
     const resultsCount = document.getElementById('resultsCount');
 
-    if (!grid || !resultInfo) return;
+    if (!grid) return;
 
     const totalResults = results.length;
     let infoText = `Found ${totalResults} item${totalResults !== 1 ? 's' : ''}`;
@@ -71,22 +80,26 @@ function displaySearchResults(results, query, category = 'all') {
     grid.innerHTML = '';
 
     results.forEach(product => {
-        const discount = calculateDiscount(product.originalPrice, product.price);
+        const offer = (typeof getLimitedOfferForProduct === 'function') ? getLimitedOfferForProduct(product.id) : null;
+        const effectivePrice = (typeof getEffectivePrice === 'function') ? getEffectivePrice(product) : product.price;
+        const discount = Math.round(((product.originalPrice - effectivePrice) / product.originalPrice) * 100);
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
             <div class="product-image">
                 <span style="font-size: 64px;">${product.emoji}</span>
+                ${offer ? `<span class="lt-badge">${offer.percent}% OFF</span>` : ''}
             </div>
             <div class="product-info">
                 <h4 class="product-name">${product.name}</h4>
+                ${product.brand ? `<div class="product-brand">${product.brand}</div>` : ''}
                 <p class="product-description">${product.description}</p>
                 <div class="product-footer">
                     <div>
-                        <span class="product-price">${formatCurrency(product.price)}</span>
+                        <span class="product-price">${formatCurrency(effectivePrice)}</span>
                         <span class="product-original-price">${formatCurrency(product.originalPrice)}</span>
                     </div>
-                    <span class="discount-badge">${discount}% OFF</span>
+                    <span class="discount-badge">${discount > 0 ? discount + '% OFF' : ''}</span>
                 </div>
             </div>
             <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add</button>
@@ -101,6 +114,7 @@ function sortResults(sortBy) {
 
     if (query) {
         filtered = filtered.filter(p =>
+            p.brand.toLowerCase().includes(query.toLowerCase()) ||
             p.name.toLowerCase().includes(query.toLowerCase()) ||
             p.description.toLowerCase().includes(query.toLowerCase())
         );
@@ -114,13 +128,13 @@ function sortResults(sortBy) {
 
     // Sort
     if (sortBy === 'price-low') {
-        filtered.sort((a, b) => a.price - b.price);
+        filtered.sort((a, b) => getEffectivePrice(a) - getEffectivePrice(b));
     } else if (sortBy === 'price-high') {
-        filtered.sort((a, b) => b.price - a.price);
+        filtered.sort((a, b) => getEffectivePrice(b) - getEffectivePrice(a));
     } else if (sortBy === 'discount') {
         filtered.sort((a, b) => 
-            calculateDiscount(b.originalPrice, b.price) - 
-            calculateDiscount(a.originalPrice, a.price)
+            calculateDiscount(b.originalPrice, getEffectivePrice(b)) -
+            calculateDiscount(a.originalPrice, getEffectivePrice(a))
         );
     }
 

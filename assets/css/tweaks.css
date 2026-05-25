@@ -1,48 +1,136 @@
-/* Small visual polish: apple-like cards, subtle animations, and limited-offer banner */
+/* UI polish: subtle motion, depth, and theme refinements */
 
 .limited-offer {
   position: relative;
-  background: linear-gradient(90deg, #ff7a18 0%, #af002d 100%);
+  background: linear-gradient(90deg, #111827 0%, #1f2937 45%, #374151 100%);
   color: #fff;
-  padding: 10px 16px;
-  border-radius: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
   margin: 12px auto 18px auto;
   max-width: 1100px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.14);
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
-.limited-offer .limited-inner { display:flex; gap:16px; align-items:center; width:100%; justify-content:space-between; }
-.limited-offer .offer-text { font-weight:700; font-size:14px; }
-.limited-offer .countdown { font-family: monospace; background: rgba(255,255,255,0.12); padding:6px 10px; border-radius:8px; }
-.limited-offer .close-banner { background:transparent; border:none; color:#fff; font-size:18px; cursor:pointer; }
 
-/* Apple-like product card polish */
-.product-card {
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.85));
-  box-shadow: 0 6px 18px rgba(15,15,15,0.06);
-  transition: transform 240ms cubic-bezier(.2,.9,.3,1), box-shadow 240ms;
-  will-change: transform;
+.limited-offer .limited-inner {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.limited-offer .offer-text { font-weight: 700; font-size: 14px; }
+.limited-offer .countdown {
+  font-family: monospace;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.limited-offer .close-banner {
+  background: transparent;
   border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 160ms ease;
 }
-.product-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 14px 40px rgba(15,15,15,0.12);
+
+.limited-offer .close-banner:hover { transform: scale(1.06); }
+
+.header,
+.categories-nav,
+.product-card,
+.order-card,
+.account-sidebar,
+.account-content,
+.cart-sidebar,
+.modal-content,
+.promo-banner,
+.search-box input,
+.filter-btn,
+.category-btn,
+.checkout-btn,
+.search-btn,
+.order-btn,
+.btn-save,
+.btn-cancel,
+.account-menu a,
+.campus-option,
+.deal-chip {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, transform 180ms ease;
 }
-.product-image { border-bottom-left-radius: 14px; border-bottom-right-radius: 14px; overflow: hidden; }
-.product-image span { display:inline-block; transform: translateZ(0); }
 
-/* gentle floating animation for images */
-@keyframes floaty { 0% { transform: translateY(0);} 50% { transform: translateY(-4px);} 100% { transform: translateY(0);} }
-.product-image span { animation: floaty 6s ease-in-out infinite; }
+.search-input:focus,
+.search-box input:focus,
+.form-input:focus,
+.sort-select:focus {
+  box-shadow: 0 0 0 3px rgba(99, 115, 147, 0.2);
+}
 
-/* subtle button micro-interactions */
-.add-to-cart-btn { transition: transform 180ms ease, box-shadow 180ms ease; }
-.add-to-cart-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+@keyframes panelRise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-/* responsive tweak for banner */
+.promo-banner,
+.products-section,
+.search-section,
+.orders-header,
+.account-container {
+  animation: panelRise 380ms ease both;
+}
+
+.cart-sidebar.open {
+  animation: cartSlide 260ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+@keyframes cartSlide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+body.theme-dark .product-card {
+  background: linear-gradient(180deg, rgba(28, 34, 44, 0.95), rgba(20, 25, 33, 0.95));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+body.theme-dark .limited-offer {
+  background: linear-gradient(90deg, #1c2330 0%, #283042 45%, #34415b 100%);
+}
+
+body.theme-dark .search-input:focus,
+body.theme-dark .search-box input:focus,
+body.theme-dark .form-input:focus,
+body.theme-dark .sort-select:focus {
+  box-shadow: 0 0 0 3px rgba(143, 161, 196, 0.25);
+}
+
 @media (max-width: 768px) {
-  .limited-offer .limited-inner { flex-direction: column; gap:8px; align-items:center; }
+  .limited-offer .limited-inner {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

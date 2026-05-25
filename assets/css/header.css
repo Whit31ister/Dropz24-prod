@@ -115,6 +115,24 @@
     transform: scale(1.1);
 }
 
+.theme-toggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-lighter);
+    color: var(--text-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 160ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
 .cart-count {
     position: absolute;
     top: -8px;
@@ -196,6 +214,77 @@
     font-size: 20px;
     cursor: pointer;
     color: var(--text-dark);
+}
+
+/* Offers Banner */
+.offers-banner {
+    width: 100%;
+    padding: 10px 0;
+    background: linear-gradient(90deg, #f8fbff 0%, #f4f7fb 50%, #f8fbff 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.theme-dark .offers-banner {
+    background: linear-gradient(90deg, #171d28 0%, #202838 50%, #171d28 100%);
+}
+
+.offers-banner .offers-banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--text-dark);
+    animation: bannerFadeIn 300ms ease;
+}
+
+.offers-banner .offers-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.offers-banner .offers-kicker {
+    background: var(--text-dark);
+    color: var(--bg-light);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.offers-banner .offer-cta {
+    background-color: var(--text-dark);
+    color: var(--bg-light);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: var(--font-weight-bold);
+    transition: transform 160ms ease, box-shadow 220ms ease;
+}
+
+.offers-banner .offer-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.offers-banner #offerCountdown {
+    margin-right: var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    font-variant-numeric: tabular-nums;
+}
+
+@keyframes bannerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Mobile Optimization */

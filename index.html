@@ -44,24 +44,27 @@
         <div class="categories-nav">
             <div class="container">
                 <div class="categories-scroll">
-                    <button class="category-btn active" onclick="filterProducts('all')">
+                    <button class="category-btn active" onclick="filterProducts('all', this)">
                         <i class="fas fa-home"></i> All
                     </button>
-                    <button class="category-btn" onclick="filterProducts('stationery')">
+                    <button class="category-btn" onclick="filterProducts('stationery', this)">
                         <i class="fas fa-pen"></i> Stationery
                     </button>
-                    <button class="category-btn" onclick="filterProducts('snacks')">
+                    <button class="category-btn" onclick="filterProducts('snacks', this)">
                         <i class="fas fa-cookie"></i> Snacks
                     </button>
-                    <button class="category-btn" onclick="filterProducts('beverages')">
+                    <button class="category-btn" onclick="filterProducts('beverages', this)">
                         <i class="fas fa-mug-hot"></i> Beverages
                     </button>
-                    <button class="category-btn" onclick="filterProducts('essentials')">
+                    <button class="category-btn" onclick="filterProducts('essentials', this)">
                         <i class="fas fa-cube"></i> Essentials
                     </button>
                 </div>
             </div>
         </div>
+
+        <!-- Offers Banner -->
+        <div id="offersBanner" class="offers-banner" style="display:none;"></div>
     </header>
 <div id="limitedOfferBanner" class="limited-offer" role="region" aria-label="Limited time offer">
     <div class="limited-inner">
@@ -83,6 +86,7 @@
                     <p class="delivery-time">⚡ Delivered in 10-15 minutes</p>
                 </div>
             </div>
+            <div class="deals-rail" id="homeDealsRail"></div>
 
             <!-- Products Section -->
             <section class="products-section">

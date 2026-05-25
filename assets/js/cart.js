@@ -20,11 +20,18 @@ function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const existingItem = cart.find(item => item.id === productId);
 
+    const effectivePrice = (typeof getEffectivePrice === 'function') ? getEffectivePrice(product) : product.price;
+
     if (existingItem) {
         existingItem.quantity++;
     } else {
         cart.push({
-            ...product,
+            id: product.id,
+            name: product.name,
+            brand: product.brand || '',
+            emoji: product.emoji,
+            price: effectivePrice,
+            originalPrice: product.originalPrice || product.price,
             quantity: 1
         });
     }
@@ -90,8 +97,8 @@ function updateCartDisplay() {
                 <div class="cart-item">
                     <div class="cart-item-image">${item.emoji}</div>
                     <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">₹${item.price}</div>
+                        <div class="cart-item-name">${item.brand ? item.brand + ' ' : ''}${item.name}</div>
+                        <div class="cart-item-price">${item.price < item.originalPrice ? '<span class="cart-price-now">₹' + item.price + '</span> <span class="cart-price-original">₹' + item.originalPrice + '</span>' : '₹' + item.price}</div>
                         <div class="cart-item-quantity">
                             <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
                             <span class="qty-display">${item.quantity}</span>

@@ -33,6 +33,45 @@
     font-size: var(--font-size-base);
 }
 
+.deals-rail {
+    display: flex;
+    gap: var(--spacing-md);
+    margin: 0 0 var(--spacing-xl);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-xs);
+}
+
+.deal-chip {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-light);
+    border-radius: 999px;
+    padding: 8px 14px;
+    white-space: nowrap;
+    transition: transform 180ms ease, box-shadow 220ms ease;
+}
+
+.deal-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.deal-chip-percent {
+    background: var(--text-dark);
+    color: var(--bg-light);
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.deal-chip-name {
+    font-size: 12px;
+    color: var(--text-medium);
+}
+
 /* Products Section */
 .products-section {
     margin-bottom: var(--spacing-2xl);
@@ -59,16 +98,32 @@
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: var(--transition);
+    transition: transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 260ms, border-color 260ms;
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    position: relative;
+    backface-visibility: hidden;
 }
 
 .product-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
-    border-color: var(--text-dark);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--border-dark);
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.35) 35%, rgba(255, 255, 255, 0) 52%);
+    transform: translateX(-110%);
+    pointer-events: none;
+    transition: transform 700ms ease;
+}
+
+.product-card:hover::before {
+    transform: translateX(105%);
 }
 
 .product-image {
@@ -137,16 +192,14 @@
 }
 
 .discount-badge {
-    background-color: var(--text-dark);
-    color: var(--bg-light);
-    padding: 4px 8px;
-    border-radius: var(--radius-sm);
-    font-size: 11px;
+    background-color: transparent;
+    color: var(--text-dark);
     font-weight: var(--font-weight-bold);
 }
 
-/* Add to Cart Button */
 .add-to-cart-btn {
+    position: relative;
+    overflow: hidden;
     background-color: var(--text-dark);
     color: var(--bg-light);
     border: none;
@@ -155,17 +208,51 @@
     font-size: 12px;
     font-weight: var(--font-weight-bold);
     cursor: pointer;
-    transition: var(--transition-fast);
+    transition: transform 160ms ease, box-shadow 200ms ease, background-color 200ms ease;
     white-space: nowrap;
 }
 
-.add-to-cart-btn:hover {
-    background-color: var(--secondary-color);
-    transform: scale(1.05);
+.add-to-cart-btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.06);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: width 0.5s ease, height 0.5s ease;
 }
 
-.add-to-cart-btn:active {
-    transform: scale(0.95);
+.add-to-cart-btn:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.product-brand {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 6px;
+    font-weight: var(--font-weight-medium);
+}
+
+.lt-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: linear-gradient(90deg, var(--text-dark), var(--secondary-color));
+    color: var(--bg-light);
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.10);
 }
 
 /* Empty State */
@@ -188,6 +275,22 @@
 .empty-state p {
     color: var(--text-light);
     margin-bottom: var(--spacing-lg);
+}
+
+/* Smooth entrance */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.products-grid .product-card {
+    animation: cardFadeIn 360ms ease both;
 }
 
 /* Responsive Design */
@@ -236,6 +339,8 @@
     .product-info {
         padding: var(--spacing-sm);
     }
+
+    .products-grid .product-card { animation-duration: 260ms; }
 }
 
 @media (max-width: 480px) {
